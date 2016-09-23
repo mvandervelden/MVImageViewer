@@ -13,7 +13,7 @@
 		0C01EA641D369F6400E0F279 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C01EA631D369F6400E0F279 /* Assets.xcassets */; };
 		0C01EA671D369F6400E0F279 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C01EA651D369F6400E0F279 /* LaunchScreen.storyboard */; };
 		0C01EA721D369F6400E0F279 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C01EA711D369F6400E0F279 /* DetailViewControllerTests.swift */; };
-		0C649D731D36DE7A00BAC631 /* UIViewControllerTestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C649D721D36DE7A00BAC631 /* UIViewControllerTestExtensions.swift */; };
+		0C649D731D36DE7A00BAC631 /* UIViewController+Showing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C649D721D36DE7A00BAC631 /* UIViewController+Showing.swift */; };
 		0C649D751D36E28D00BAC631 /* MasterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C649D741D36E28D00BAC631 /* MasterViewControllerTests.swift */; };
 		0C649D771D377ACC00BAC631 /* InsertionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C649D761D377ACC00BAC631 /* InsertionTableView.swift */; };
 		0C69C3851D6DA88000FD8BAD /* CucumberishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C69C3841D6DA88000FD8BAD /* CucumberishTests.swift */; };
@@ -57,7 +57,7 @@
 		0C01EA6D1D369F6400E0F279 /* MVImageViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVImageViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C01EA711D369F6400E0F279 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		0C01EA731D369F6400E0F279 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0C649D721D36DE7A00BAC631 /* UIViewControllerTestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerTestExtensions.swift; sourceTree = "<group>"; };
+		0C649D721D36DE7A00BAC631 /* UIViewController+Showing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Showing.swift"; sourceTree = "<group>"; };
 		0C649D741D36E28D00BAC631 /* MasterViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewControllerTests.swift; sourceTree = "<group>"; };
 		0C649D761D377ACC00BAC631 /* InsertionTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertionTableView.swift; sourceTree = "<group>"; };
 		0C69C3821D6DA88000FD8BAD /* CucumberishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CucumberishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,7 +215,7 @@
 		7149FB93B5B57C5EFB48F19C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				0C649D721D36DE7A00BAC631 /* UIViewControllerTestExtensions.swift */,
+				0C649D721D36DE7A00BAC631 /* UIViewController+Showing.swift */,
 				0C649D761D377ACC00BAC631 /* InsertionTableView.swift */,
 			);
 			path = Helpers;
@@ -525,7 +525,7 @@
 			files = (
 				0C649D751D36E28D00BAC631 /* MasterViewControllerTests.swift in Sources */,
 				0C649D771D377ACC00BAC631 /* InsertionTableView.swift in Sources */,
-				0C649D731D36DE7A00BAC631 /* UIViewControllerTestExtensions.swift in Sources */,
+				0C649D731D36DE7A00BAC631 /* UIViewController+Showing.swift in Sources */,
 				0C01EA721D369F6400E0F279 /* DetailViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
