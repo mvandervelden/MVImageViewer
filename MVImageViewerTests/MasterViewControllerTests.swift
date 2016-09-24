@@ -4,13 +4,14 @@ import Quick
 import Nimble
 @testable import MVImageViewer
 
-class MasterViewControllerSpec : QuickSpec {
+class MasterViewControllerSpec: QuickSpec {
     override func spec() {
         describe("master view controller") {
-            var subject : MasterViewController!
+            var subject: MasterViewController!
             
             beforeEach() {
-                subject = UIViewController.loadViewController(withIdentifier: "MasterViewController", fromStoryboard: "Main") as? MasterViewController
+                subject = UIViewController.loadViewController(withIdentifier: "MasterViewController",
+                                                              fromStoryboard: "Main") as? MasterViewController
             }
             
             context("showing the screen") {
@@ -19,7 +20,7 @@ class MasterViewControllerSpec : QuickSpec {
                 }
                 
                 describe("adding a new object") {
-                    var tableView : InsertionTableView!
+                    var tableView: InsertionTableView!
                     
                     beforeEach() {
                         tableView = InsertionTableView()
@@ -33,7 +34,7 @@ class MasterViewControllerSpec : QuickSpec {
                     }
                     
                     it("adds an object the start of the table") {
-                        expect(tableView.insertedIndexPath).to(equal(IndexPath(row: 0, section: 0)))
+                        expect(tableView.insertedIndexPath) == IndexPath(row: 0, section: 0)
                     }
                 }
             }

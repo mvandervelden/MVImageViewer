@@ -22,7 +22,8 @@ class MasterViewController: UITableViewController {
         navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count - 1] as? UINavigationController)?.topViewController as? DetailViewController
+            let navigationController = controllers[controllers.count - 1] as? UINavigationController
+            detailViewController = navigationController?.topViewController as? DetailViewController
             
         }
     }
@@ -45,8 +46,9 @@ class MasterViewController: UITableViewController {
 extension MasterViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
+            let navigationController = segue.destination as? UINavigationController
             if let indexPath = self.tableView.indexPathForSelectedRow,
-                let controller = (segue.destination as? UINavigationController)?.topViewController as? DetailViewController {
+                    let controller = navigationController?.topViewController as? DetailViewController {
                 let object = objects[(indexPath as NSIndexPath).row]
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
@@ -80,7 +82,9 @@ extension MasterViewController {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             objects.remove(at: (indexPath as NSIndexPath).row)
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -88,4 +92,3 @@ extension MasterViewController {
         }
     }
 }
-

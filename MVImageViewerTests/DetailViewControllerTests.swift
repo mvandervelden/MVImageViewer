@@ -3,7 +3,7 @@ import Nimble
 @testable import MVImageViewer
 
 
-extension String : Detail {
+extension String: Detail {
     func description() -> String {
         return description
     }
@@ -12,10 +12,11 @@ extension String : Detail {
 class DetailViewControllerSpec: QuickSpec {
     override func spec() {
         describe("detail view controller") {
-            var subject : DetailViewController!
+            var subject: DetailViewController!
             
             beforeEach() {
-                subject = UIViewController.loadViewController(withIdentifier: "DetailViewController", fromStoryboard: "Main") as? DetailViewController
+                subject = UIViewController.loadViewController(withIdentifier: "DetailViewController",
+                                                              fromStoryboard: "Main") as? DetailViewController
             }
             
             context("given a detail item") {
@@ -29,7 +30,7 @@ class DetailViewControllerSpec: QuickSpec {
                     }
                     
                     it("sets the item's description in the detail label") {
-                        expect(subject.detailDescriptionLabel.text).to(equal("some item"))
+                        expect(subject.detailDescriptionLabel.text) == "some item"
                     }
                     
                     context("detail item is changed") {
@@ -38,7 +39,7 @@ class DetailViewControllerSpec: QuickSpec {
                         }
                         
                         it("updates the label") {
-                            expect(subject.detailDescriptionLabel.text).to(equal("changed"))
+                            expect(subject.detailDescriptionLabel.text) == "changed"
                         }
                     }
                 }
@@ -51,7 +52,7 @@ class DetailViewControllerSpec: QuickSpec {
                     }
                     
                     it("has an empty label") {
-                        expect(subject.detailDescriptionLabel.text).to(equal(""))
+                        expect(subject.detailDescriptionLabel.text) == ""
                     }
                 }
             }
