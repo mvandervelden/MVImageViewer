@@ -1,7 +1,7 @@
 Feature: Deleting items
 
 Scenario: Deleting an item
-Given I am on the master screen
+Given I am on the list screen
 And an item is available
 When I swipe left on the item
 And I tap the delete button

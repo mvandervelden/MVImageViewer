@@ -4,8 +4,8 @@ import KIF
 class StepDefinitions: NSObject {
     func setup() {
 
-        Given("I am on the master screen") { (args, userInfo) -> Void in
-            self.tester().waitForView(withAccessibilityLabel: "Table")
+        Given("I am on the list screen") { (args, userInfo) -> Void in
+            let _ = self.getTableView()
         }
 
         And("an item is available") { (args, userInfo) -> Void in
@@ -19,6 +19,16 @@ class StepDefinitions: NSObject {
             self.tapButton(withLabel: (args?[0])!)
         }
 
+        And("I select the first image from the gallery") { (args, userInfo) -> Void in
+            return //Pending
+//            self.tester().waitForAnimationsToFinish()
+//            self.tester().choosePhoto(inAlbum: nil, atRow: 0, column: 0)
+        }
+        
+        Then("I return to the list screen") { (args, userInfo) -> Void in
+            let _ = self.getTableView()
+        }
+        
         When("I tap the item") { (args, userInfo) -> Void in
             self.tester().tapRow(at: IndexPath.indexPathForFirstRow(), in: self.getTableView())
         }
@@ -27,7 +37,7 @@ class StepDefinitions: NSObject {
             self.tester().swipeRow(at: IndexPath.indexPathForFirstRow(), in: self.getTableView(), in: .left)
         }
         
-        Then("an item is added") { (args, userInfo) -> Void in
+        And("the image is added to the list") { (args, userInfo) -> Void in
             self.tester().waitForCell(at: IndexPath.indexPathForFirstRow(), in: self.getTableView())
         }
 
@@ -43,6 +53,7 @@ class StepDefinitions: NSObject {
     fileprivate func getTableView() -> UITableView? {
         return self.tester().waitForView(withAccessibilityLabel: "Table") as? UITableView
     }
+    
 
     fileprivate func tapButton(withLabel label: String) {
         let buttonLabel = label.capitalized
