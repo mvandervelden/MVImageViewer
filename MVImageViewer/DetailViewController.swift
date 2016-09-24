@@ -23,11 +23,7 @@ class DetailViewController: UIViewController {
     
     func configureView() {
         if let imageView = detailImageView {
-            if let item = detailItem {
-                imageView.image = item.image
-            } else {
-                imageView.image = nil
-            }
+            imageView.image = detailItem?.image
         }
     }
 }

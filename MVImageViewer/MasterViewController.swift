@@ -20,7 +20,7 @@ class MasterViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem
         imagePicker.delegate = self
         
-        if let split = self.splitViewController {
+        if let split = splitViewController {
             let controllers = split.viewControllers
             let navigationController = controllers.last as? UINavigationController
             detailViewController = navigationController?.topViewController as? DetailViewController
@@ -47,10 +47,9 @@ extension MasterViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let navigationController = segue.destination as? UINavigationController
-            if let indexPath = self.tableView.indexPathForSelectedRow,
+            if let indexPath = tableView.indexPathForSelectedRow,
                     let controller = navigationController?.topViewController as? DetailViewController {
-                let object = objects[(indexPath as NSIndexPath).row]
-                controller.detailItem = object
+                controller.detailItem = objects[indexPath.row]
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -72,7 +71,7 @@ extension MasterViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         let object = objects[indexPath.row]
-        cell.imageView!.image = object.image
+        cell.imageView?.image = object.image
         return cell
     }
     
@@ -84,9 +83,8 @@ extension MasterViewController {
                             commit editingStyle: UITableViewCellEditingStyle,
                             forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: (indexPath as NSIndexPath).row)
+            objects.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
         }
     }
 }
