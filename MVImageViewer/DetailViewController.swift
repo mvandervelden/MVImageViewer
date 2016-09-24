@@ -3,12 +3,12 @@
 import UIKit
 
 protocol Detail {
-    func description() -> String
+    var image: UIImage? { get }
 }
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet weak var detailImageView: UIImageView!
     
     var detailItem: Detail? {
         didSet {
@@ -22,11 +22,11 @@ class DetailViewController: UIViewController {
     }
     
     func configureView() {
-        if let label = detailDescriptionLabel {
+        if let imageView = detailImageView {
             if let item = detailItem {
-                label.text = item.description()
+                imageView.image = item.image
             } else {
-                label.text = ""
+                imageView.image = nil
             }
         }
     }

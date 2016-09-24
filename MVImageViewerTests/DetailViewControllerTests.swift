@@ -2,13 +2,6 @@ import Quick
 import Nimble
 @testable import MVImageViewer
 
-
-extension String: Detail {
-    func description() -> String {
-        return description
-    }
-}
-
 class DetailViewControllerSpec: QuickSpec {
     override func spec() {
         describe("detail view controller") {
@@ -20,8 +13,10 @@ class DetailViewControllerSpec: QuickSpec {
             }
             
             context("given a detail item") {
+                let detail = Image(image:UIImage())
+                
                 beforeEach() {
-                    subject.detailItem = "some item"
+                    subject.detailItem = detail
                 }
                 
                 context("when detail screen is shown") {
@@ -30,16 +25,18 @@ class DetailViewControllerSpec: QuickSpec {
                     }
                     
                     it("sets the item's description in the detail label") {
-                        expect(subject.detailDescriptionLabel.text) == "some item"
+                        expect(subject.detailImageView.image) == detail.image
                     }
                     
                     context("detail item is changed") {
+                        let changed = Image(image:UIImage())
+                        
                         beforeEach() {
-                            subject.detailItem = "changed"
+                            subject.detailItem = changed
                         }
                         
                         it("updates the label") {
-                            expect(subject.detailDescriptionLabel.text) == "changed"
+                            expect(subject.detailImageView.image) == changed.image
                         }
                     }
                 }
@@ -52,7 +49,7 @@ class DetailViewControllerSpec: QuickSpec {
                     }
                     
                     it("has an empty label") {
-                        expect(subject.detailDescriptionLabel.text) == ""
+                        expect(subject.detailImageView.image).to(beNil())
                     }
                 }
             }

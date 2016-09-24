@@ -2,16 +2,15 @@
 
 import UIKit
 
-extension Date : Detail {
-    func description() -> String {
-        return description
-    }
+struct Image: Detail {
+    let image: UIImage?
 }
 
 class MasterViewController: UITableViewController {
     
     @IBOutlet var addButton: UIBarButtonItem!
     
+    var imagePicker = UIImagePickerController()
     var detailViewController: DetailViewController? = nil
     var objects = [Detail]()
     
@@ -19,6 +18,7 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
+        imagePicker.delegate = self
         
         if let split = self.splitViewController {
             let controllers = split.viewControllers
@@ -36,13 +36,9 @@ class MasterViewController: UITableViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
-        insertNewObject(sender)
-    }
-    
-    func insertNewObject(_ sender: AnyObject) {
-        objects.insert(Date(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
 }
 
@@ -75,10 +71,8 @@ extension MasterViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        
-        if let object = objects[(indexPath as NSIndexPath).row] as? Date {
-            cell.textLabel!.text = object.description
-        }
+        let object = objects[indexPath.row]
+        cell.imageView!.image = object.image
         return cell
     }
     
@@ -94,5 +88,21 @@ extension MasterViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
         }
+    }
+}
+
+// MARK: - Image Picker Delegate
+extension MasterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            insert(pickedImage)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func insert(_ image: UIImage) {
+        objects.insert(Image(image: image), at: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
     }
 }

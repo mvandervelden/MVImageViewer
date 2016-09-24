@@ -11,7 +11,7 @@ class StepDefinitions: NSObject {
         And("an item is available") { (args, userInfo) -> Void in
             let tableView = self.getTableView()
             if tableView?.cellForRow(at: IndexPath.indexPathForFirstRow()) == nil {
-                self.tapButton(withLabel:"Add")
+                self.addImageToList()
             }
         }
 
@@ -20,9 +20,8 @@ class StepDefinitions: NSObject {
         }
 
         And("I select the first image from the gallery") { (args, userInfo) -> Void in
-            return //Pending
-//            self.tester().waitForAnimationsToFinish()
-//            self.tester().choosePhoto(inAlbum: nil, atRow: 0, column: 0)
+            self.tester().waitForAnimationsToFinish()
+            self.tester().choosePhoto(inAlbum: "Moments", atRow: 2, column: 0)
         }
         
         Then("I return to the list screen") { (args, userInfo) -> Void in
@@ -50,17 +49,23 @@ class StepDefinitions: NSObject {
         }
     }
 
-    fileprivate func getTableView() -> UITableView? {
+    private func getTableView() -> UITableView? {
         return self.tester().waitForView(withAccessibilityLabel: "Table") as? UITableView
     }
     
 
-    fileprivate func tapButton(withLabel label: String) {
+    private func tapButton(withLabel label: String) {
         let buttonLabel = label.capitalized
         self.tester().tapView(withAccessibilityLabel: buttonLabel)
     }
 
-    fileprivate func tester(_ file: String = #file, _ line: Int = #line) -> KIFUITestActor {
+    private func addImageToList() {
+        self.tapButton(withLabel:"Add")
+        self.tester().waitForAnimationsToFinish()
+        self.tester().choosePhoto(inAlbum: "Moments", atRow: 2, column: 0)
+    }
+    
+    private func tester(_ file: String = #file, _ line: Int = #line) -> KIFUITestActor {
         return KIFUITestActor(inFile: file, atLine: line, delegate: self)
     }
 }

@@ -14,9 +14,17 @@ class MasterViewControllerSpec: QuickSpec {
                                                               fromStoryboard: "Main") as? MasterViewController
             }
             
+            it("has an image picker") {
+                expect(subject.imagePicker).toNot(beNil())
+            }
+            
             context("showing the screen") {
                 beforeEach() {
                     subject.show()
+                }
+
+                it("is the delegate of the image picker") {
+                    expect(subject.imagePicker.delegate).to(beIdenticalTo(subject))
                 }
                 
                 describe("adding a new object to the table") {
@@ -26,7 +34,7 @@ class MasterViewControllerSpec: QuickSpec {
                         tableView = InsertionTableView()
                         subject.tableView = tableView
                         
-                        subject.insertNewObject(self)
+                        subject.insert(UIImage())
                     }
                     
                     it("adds an object to the view model") {
@@ -45,7 +53,9 @@ class MasterViewControllerSpec: QuickSpec {
                 }
                 
                 it("opens a gallery browser screen") {
-                    
+                    expect(subject.imagePicker.allowsEditing) == false
+                    expect(subject.imagePicker.sourceType) == UIImagePickerControllerSourceType.photoLibrary
+                    expect(subject.imagePicker.isViewLoaded) == true
                 }
             }
         }
