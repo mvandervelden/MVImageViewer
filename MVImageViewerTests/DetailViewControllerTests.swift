@@ -15,7 +15,7 @@ class DetailViewControllerSpec: QuickSpec {
             var subject : DetailViewController!
             
             beforeEach() {
-                subject = UIViewController.loadViewController(withIdentifier: "DetailViewController", fromStoryboard: "Main") as! DetailViewController
+                subject = UIViewController.loadViewController(withIdentifier: "DetailViewController", fromStoryboard: "Main") as? DetailViewController
             }
             
             context("given a detail item") {

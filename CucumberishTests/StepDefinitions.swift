@@ -10,7 +10,7 @@ class StepDefinitions: NSObject {
 
         And("an item is available") { (args, userInfo) -> Void in
             let tableView = self.getTableView()
-            if tableView.cellForRow(at: IndexPath.indexPathForFirstRow()) == nil {
+            if tableView?.cellForRow(at: IndexPath.indexPathForFirstRow()) == nil {
                 self.tapButton(withLabel:"Add")
             }
         }
@@ -36,12 +36,12 @@ class StepDefinitions: NSObject {
         }
         
         Then("the item is deleted") { (args, userInfo) -> Void in
-            expect(self.getTableView().numberOfRows(inSection: 0)).to(equal(0))
+            expect(self.getTableView()?.numberOfRows(inSection: 0)).to(equal(0))
         }
     }
 
-    fileprivate func getTableView() -> UITableView {
-        return self.tester().waitForView(withAccessibilityLabel: "Table") as! UITableView
+    fileprivate func getTableView() -> UITableView? {
+        return self.tester().waitForView(withAccessibilityLabel: "Table") as? UITableView
     }
 
     fileprivate func tapButton(withLabel label: String) {

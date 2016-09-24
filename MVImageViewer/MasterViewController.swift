@@ -22,7 +22,8 @@ class MasterViewController: UITableViewController {
         navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? DetailViewController
+            detailViewController = (controllers[controllers.count - 1] as? UINavigationController)?.topViewController as? DetailViewController
+            
         }
     }
     
@@ -44,9 +45,9 @@ class MasterViewController: UITableViewController {
 extension MasterViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
+            if let indexPath = self.tableView.indexPathForSelectedRow,
+                let controller = (segue.destination as? UINavigationController)?.topViewController as? DetailViewController {
                 let object = objects[(indexPath as NSIndexPath).row]
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
@@ -68,8 +69,10 @@ extension MasterViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let object = objects[(indexPath as NSIndexPath).row] as! Date
-        cell.textLabel!.text = object.description
+        
+        if let object = objects[(indexPath as NSIndexPath).row] as? Date {
+            cell.textLabel!.text = object.description
+        }
         return cell
     }
     

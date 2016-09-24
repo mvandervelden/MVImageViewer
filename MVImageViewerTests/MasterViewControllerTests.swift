@@ -10,7 +10,7 @@ class MasterViewControllerSpec : QuickSpec {
             var subject : MasterViewController!
             
             beforeEach() {
-                subject = UIViewController.loadViewController(withIdentifier: "MasterViewController", fromStoryboard: "Main") as! MasterViewController
+                subject = UIViewController.loadViewController(withIdentifier: "MasterViewController", fromStoryboard: "Main") as? MasterViewController
             }
             
             context("showing the screen") {
