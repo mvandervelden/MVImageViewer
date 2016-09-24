@@ -19,7 +19,7 @@ class MasterViewControllerSpec: QuickSpec {
                     subject.show()
                 }
                 
-                describe("adding a new object") {
+                describe("adding a new object to the table") {
                     var tableView: InsertionTableView!
                     
                     beforeEach() {
@@ -36,6 +36,16 @@ class MasterViewControllerSpec: QuickSpec {
                     it("adds an object the start of the table") {
                         expect(tableView.insertedIndexPath) == IndexPath(row: 0, section: 0)
                     }
+                }
+            }
+            
+            describe("tapping the add button") {
+                beforeEach {
+                    subject.addButtonTapped(subject.addButton)
+                }
+                
+                it("opens a gallery browser screen") {
+                    
                 }
             }
         }

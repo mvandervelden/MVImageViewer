@@ -10,6 +10,8 @@ extension Date : Detail {
 
 class MasterViewController: UITableViewController {
     
+    @IBOutlet var addButton: UIBarButtonItem!
+    
     var detailViewController: DetailViewController? = nil
     var objects = [Detail]()
     
@@ -18,11 +20,9 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
         
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
-            let navigationController = controllers[controllers.count - 1] as? UINavigationController
+            let navigationController = controllers.last as? UINavigationController
             detailViewController = navigationController?.topViewController as? DetailViewController
             
         }
@@ -33,6 +33,10 @@ class MasterViewController: UITableViewController {
             clearsSelectionOnViewWillAppear = split.isCollapsed
         }
         super.viewWillAppear(animated)
+    }
+    
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        insertNewObject(sender)
     }
     
     func insertNewObject(_ sender: AnyObject) {
