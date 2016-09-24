@@ -23,7 +23,6 @@
 		7149F088D5405661B1713677 /* NSObject+KIFTestActorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149F831ECB9C93F420A7B7A /* NSObject+KIFTestActorDelegate.swift */; };
 		7149F3AC8C4580D752A763FD /* NSIndexPath+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149F8D22905622F66F82CBC /* NSIndexPath+Testing.swift */; };
 		7149F6EB966085D901A6728D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149F281B2A502FF768C5B98 /* AppDelegate.swift */; };
-		7149F81CA772D89497C3F9DD /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7149FF8AFCEB0DCCAF8E6F08 /* .travis.yml */; };
 		7149F9DCBD1D912D45CA8F52 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 7149F1F16E8303F9155C0405 /* LICENSE */; };
 		CBE6F31E2D47E704BB5364F7 /* Pods_MVImageViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD08C8C66AA95BAD1059EC1 /* Pods_MVImageViewer.framework */; };
 		CCFFE7D4D73F0C839F4E5121 /* Pods_MVImageViewerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924A6DE05B2947405D2F2149 /* Pods_MVImageViewerTests.framework */; };
@@ -354,7 +353,6 @@
 				0C01EA671D369F6400E0F279 /* LaunchScreen.storyboard in Resources */,
 				0C01EA641D369F6400E0F279 /* Assets.xcassets in Resources */,
 				0C01EA621D369F6400E0F279 /* Main.storyboard in Resources */,
-				7149F81CA772D89497C3F9DD /* .travis.yml in Resources */,
 				7149F9DCBD1D912D45CA8F52 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
