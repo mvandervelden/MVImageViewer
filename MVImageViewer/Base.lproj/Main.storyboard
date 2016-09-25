@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,7 +26,7 @@
         <!--Detail-->
         <scene sceneID="yUG-lL-AsK">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" title="Detail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JEX-9P-axG" customClass="DetailViewController" customModule="MVImageViewer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" title="Detail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JEX-9P-axG" customClass="DetailViewController" customModule="MVImageViewer" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
                         <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
@@ -37,7 +38,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="w13-eL-OVG">
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BHo-Q0-7Mk"/>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGS-kg-L2b">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap 'Analyze' to find fitting labels for this image" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGS-kg-L2b">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -66,15 +67,22 @@
                             <constraint firstItem="w13-eL-OVG" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="NS0-vX-xOB"/>
                             <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="0rZ-RS-aXf" secondAttribute="bottom" id="Pay-pp-cxX"/>
                             <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" relation="greaterThanOrEqual" secondItem="w13-eL-OVG" secondAttribute="bottom" id="TBS-Oa-aPK"/>
-                            <constraint firstAttribute="trailing" secondItem="w13-eL-OVG" secondAttribute="trailing" id="eAC-uB-FAO"/>
-                            <constraint firstItem="w13-eL-OVG" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="fih-ee-ulT"/>
                             <constraint firstItem="0rZ-RS-aXf" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="suK-rl-UOv"/>
+                            <constraint firstItem="w13-eL-OVG" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" id="ufr-dC-FGg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w13-eL-OVG" secondAttribute="trailing" id="wch-uD-xOR"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
+                        <barButtonItem key="rightBarButtonItem" title="Analyze" id="Is3-d6-ilo">
+                            <connections>
+                                <action selector="analyzeTapped:" destination="JEX-9P-axG" id="BVB-fv-2tc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="mMG-ke-9lP" id="zqS-Ac-Xta"/>
+                        <outlet property="analyzeButton" destination="Is3-d6-ilo" id="V6k-7N-RDc"/>
                         <outlet property="blurringView" destination="0rZ-RS-aXf" id="zoB-Rl-IGd"/>
                         <outlet property="detailImageView" destination="BHo-Q0-7Mk" id="FyZ-Kp-kAA"/>
                         <outlet property="labels" destination="AGS-kg-L2b" id="RE3-yn-uR4"/>
@@ -111,11 +119,11 @@
                                 <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <frame key="frameInset" minX="15" width="345" height="43"/>
+                                            <frame key="frameInset" minX="15" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

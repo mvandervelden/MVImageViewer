@@ -8,6 +8,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var labels: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var blurringView: UIVisualEffectView!
+    @IBOutlet weak var analyzeButton: UIBarButtonItem!
     
     var vision = CloudVision()
     
@@ -39,6 +40,13 @@ class DetailViewController: UIViewController {
     
     private func configureView() {
         detailImageView.image = detailItem?.image
+        analyzeButton.isEnabled = detailItem?.image != nil
+        labels.text = detailItem?.image != nil ?
+            "Tap 'Analyze' to find fitting labels for this image" :
+            "Choose an image in the list to enable analysis"
+    }
+    
+    @IBAction func analyzeTapped(_ sender: UIBarButtonItem) {
         if let image = detailItem?.image {
             fetchInformation(image: image)
         }
@@ -56,7 +64,7 @@ class DetailViewController: UIViewController {
         switch response {
         case .success(let result):
             labels.text = result.annotations.reduce("") { (currentString, annotation) -> String in
-                currentString + ", \(annotation.label)"
+                currentString + (currentString == "" ? "" : "\n") + "\(annotation.label)"
             }
         case .failure(let error):
             let alert = UIAlertController(title: "Cloud Vision Error",
