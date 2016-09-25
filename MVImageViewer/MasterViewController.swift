@@ -8,7 +8,7 @@ struct Image: Detail {
 
 class MasterViewController: UITableViewController {
     
-    @IBOutlet var addButton: UIBarButtonItem!
+    @IBOutlet weak var addButton: UIBarButtonItem!
     
     var imagePicker = UIImagePickerController()
     var detailViewController: DetailViewController? = nil

@@ -23,14 +23,16 @@ class DetailViewController: UIViewController {
         configureView()
     }
     
-    func configureView() {
-        if let imageView = detailImageView {
-            imageView.image = detailItem?.image
-            if let image = detailItem?.image {
-                vision.process(image: image) { (result) in
-                    print(result)
-                }
-            }
+    private func configureView() {
+        detailImageView.image = detailItem?.image
+        if let image = detailItem?.image {
+            fetchInformation(image: image)
+        }
+    }
+    
+    private func fetchInformation(image: UIImage) {
+        vision.process(image: image) { (result) in
+            print(result)
         }
     }
 }

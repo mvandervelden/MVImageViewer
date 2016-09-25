@@ -28,8 +28,6 @@ struct CloudVisionResult: CustomStringConvertible {
     let annotations: [LabelAnnotation]
     
     init?(json: [String: Any]) {
-        print(json)
-
         guard let responses = json["responses"] as? [[String: Any]] else {
             return nil
         }

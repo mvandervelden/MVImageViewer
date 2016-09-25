@@ -10,6 +10,7 @@ class DetailViewControllerSpec: QuickSpec {
             beforeEach() {
                 subject = UIViewController.loadViewController(withIdentifier: "DetailViewController",
                                                               fromStoryboard: "Main") as? DetailViewController
+                subject.show()
             }
             
             context("given a detail item") {
@@ -19,38 +20,26 @@ class DetailViewControllerSpec: QuickSpec {
                     subject.detailItem = detail
                 }
                 
-                context("when detail screen is shown") {
+                it("sets the item's description in the detail label") {
+                    expect(subject.detailImageView.image) == detail.image
+                }
+                
+                context("detail item is changed") {
+                    let changed = Image(image:UIImage())
+                    
                     beforeEach() {
-                        subject.show()
+                        subject.detailItem = changed
                     }
                     
-                    it("sets the item's description in the detail label") {
-                        expect(subject.detailImageView.image) == detail.image
-                    }
-                    
-                    context("detail item is changed") {
-                        let changed = Image(image:UIImage())
-                        
-                        beforeEach() {
-                            subject.detailItem = changed
-                        }
-                        
-                        it("updates the label") {
-                            expect(subject.detailImageView.image) == changed.image
-                        }
+                    it("updates the label") {
+                        expect(subject.detailImageView.image) == changed.image
                     }
                 }
             }
             
             context("given no detail item") {
-                context("when detail screen is shown") {
-                    beforeEach() {
-                        subject.show()
-                    }
-                    
-                    it("has an empty label") {
-                        expect(subject.detailImageView.image).to(beNil())
-                    }
+                it("has an empty label") {
+                    expect(subject.detailImageView.image).to(beNil())
                 }
             }
         }
