@@ -9,17 +9,35 @@ protocol Detail {
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var detailImageView: UIImageView!
+    @IBOutlet weak var labels: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var blurringView: UIVisualEffectView!
     
     var vision = CloudVision()
     
-    var detailItem: Detail? {
-        didSet {
-            configureView()
+    var detailItem: Detail?
+    
+    var isLoading = false {
+        willSet {
+            switch newValue {
+            case true:
+                blurringView.isHidden = false
+                activityIndicator.startAnimating()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            case false:
+                blurringView.isHidden = true
+                activityIndicator.stopAnimating()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureView()
     }
     
@@ -31,8 +49,25 @@ class DetailViewController: UIViewController {
     }
     
     private func fetchInformation(image: UIImage) {
-        vision.process(image: image) { (result) in
-            print(result)
+        isLoading = true
+        vision.process(image: image) {[weak self] (response) in
+            self?.handle(response: response)
+        }
+    }
+    
+    private func handle(response: CloudVisionFinished) {
+        isLoading = false
+        switch response {
+        case .success(let result):
+            labels.text = result.annotations.reduce("") { (currentString, annotation) -> String in
+                currentString + ", \(annotation.label)"
+            }
+        case .failure(let error):
+            let alert = UIAlertController(title: "Cloud Vision Error",
+                                          message: error.localizedDescription,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
         }
     }
 }

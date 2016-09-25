@@ -34,20 +34,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BHo-Q0-7Mk"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="w13-eL-OVG">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BHo-Q0-7Mk"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGS-kg-L2b">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0rZ-RS-aXf">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="tHm-Xc-1ce">
+                                    <frame key="frameInset"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mMG-ke-9lP"/>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mMG-ke-9lP" firstAttribute="centerY" secondItem="tHm-Xc-1ce" secondAttribute="centerY" id="AAm-So-pEm"/>
+                                        <constraint firstItem="mMG-ke-9lP" firstAttribute="centerX" secondItem="tHm-Xc-1ce" secondAttribute="centerX" id="aLz-8U-K7h"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="BHo-Q0-7Mk" secondAttribute="bottom" id="SIZ-cg-pOJ"/>
-                            <constraint firstItem="BHo-Q0-7Mk" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="Y2V-z3-0kC"/>
-                            <constraint firstAttribute="trailing" secondItem="BHo-Q0-7Mk" secondAttribute="trailing" id="aUx-wl-kDT"/>
-                            <constraint firstItem="BHo-Q0-7Mk" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="gw3-Z7-bpQ"/>
+                            <constraint firstItem="0rZ-RS-aXf" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="HH7-Xx-OgD"/>
+                            <constraint firstAttribute="trailing" secondItem="0rZ-RS-aXf" secondAttribute="trailing" id="HfG-Cu-2c4"/>
+                            <constraint firstItem="w13-eL-OVG" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="NS0-vX-xOB"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="0rZ-RS-aXf" secondAttribute="bottom" id="Pay-pp-cxX"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" relation="greaterThanOrEqual" secondItem="w13-eL-OVG" secondAttribute="bottom" id="TBS-Oa-aPK"/>
+                            <constraint firstAttribute="trailing" secondItem="w13-eL-OVG" secondAttribute="trailing" id="eAC-uB-FAO"/>
+                            <constraint firstItem="w13-eL-OVG" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="fih-ee-ulT"/>
+                            <constraint firstItem="0rZ-RS-aXf" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="suK-rl-UOv"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="mMG-ke-9lP" id="zqS-Ac-Xta"/>
+                        <outlet property="blurringView" destination="0rZ-RS-aXf" id="zoB-Rl-IGd"/>
                         <outlet property="detailImageView" destination="BHo-Q0-7Mk" id="FyZ-Kp-kAA"/>
+                        <outlet property="labels" destination="AGS-kg-L2b" id="RE3-yn-uR4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
