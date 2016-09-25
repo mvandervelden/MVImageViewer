@@ -12,20 +12,15 @@ class DetailViewController: UIViewController {
     
     var vision = CloudVision()
     
-    var detailItem: Detail?
+    var detailItem: Image?
     
     var isLoading = false {
         willSet {
-            switch newValue {
-            case true:
-                blurringView.isHidden = false
-                activityIndicator.startAnimating()
-                UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            case false:
-                blurringView.isHidden = true
+            blurringView.isHidden = !newValue
+            newValue ?
+                activityIndicator.startAnimating() :
                 activityIndicator.stopAnimating()
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
+            UIApplication.shared.isNetworkActivityIndicatorVisible = newValue
         }
     }
     
@@ -41,9 +36,13 @@ class DetailViewController: UIViewController {
     private func configureView() {
         detailImageView.image = detailItem?.image
         analyzeButton.isEnabled = detailItem?.image != nil
-        labels.text = detailItem?.image != nil ?
-            "Tap 'Analyze' to find fitting labels for this image" :
-            "Choose an image in the list to enable analysis"
+        if detailItem?.analysis != nil {
+            labels.text = detailItem?.analysis?.orderedLabels
+        } else {
+            labels.text = detailItem?.image != nil ?
+                "Tap 'Analyze' to find fitting labels for this image" :
+                "Choose an image in the list to enable analysis"
+        }
     }
     
     @IBAction func analyzeTapped(_ sender: UIBarButtonItem) {
@@ -63,9 +62,8 @@ class DetailViewController: UIViewController {
         isLoading = false
         switch response {
         case .success(let result):
-            labels.text = result.annotations.reduce("") { (currentString, annotation) -> String in
-                currentString + (currentString == "" ? "" : "\n") + "\(annotation.label)"
-            }
+            detailItem?.analysis = result
+            labels.text = result.orderedLabels
         case .failure(let error):
             let alert = UIAlertController(title: "Cloud Vision Error",
                                           message: error.localizedDescription,

@@ -13,7 +13,6 @@
 		0C01EA641D369F6400E0F279 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C01EA631D369F6400E0F279 /* Assets.xcassets */; };
 		0C01EA671D369F6400E0F279 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C01EA651D369F6400E0F279 /* LaunchScreen.storyboard */; };
 		0C01EA721D369F6400E0F279 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C01EA711D369F6400E0F279 /* DetailViewControllerTests.swift */; };
-		0C45DDC91D9833BE00514B0E /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45DDC71D9833BE00514B0E /* Detail.swift */; };
 		0C45DDCA1D9833BE00514B0E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45DDC81D9833BE00514B0E /* Image.swift */; };
 		0C45DDCC1D9833D300514B0E /* LabelAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45DDCB1D9833D300514B0E /* LabelAnnotation.swift */; };
 		0C45DDCE1D9833F800514B0E /* CloudVisionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45DDCD1D9833F800514B0E /* CloudVisionResult.swift */; };
@@ -64,7 +63,6 @@
 		0C01EA6D1D369F6400E0F279 /* MVImageViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVImageViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C01EA711D369F6400E0F279 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		0C01EA731D369F6400E0F279 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0C45DDC71D9833BE00514B0E /* Detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Detail.swift; path = MVImageViewer/ViewModels/Detail.swift; sourceTree = SOURCE_ROOT; };
 		0C45DDC81D9833BE00514B0E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Image.swift; path = MVImageViewer/ViewModels/Image.swift; sourceTree = SOURCE_ROOT; };
 		0C45DDCB1D9833D300514B0E /* LabelAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelAnnotation.swift; sourceTree = "<group>"; };
 		0C45DDCD1D9833F800514B0E /* CloudVisionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudVisionResult.swift; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 		0C45DDC11D9832D400514B0E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				0C45DDC71D9833BE00514B0E /* Detail.swift */,
 				0C45DDC81D9833BE00514B0E /* Image.swift */,
 			);
 			name = ViewModels;
@@ -587,7 +584,6 @@
 				0C45DDD21D98346000514B0E /* CloudVisionError.swift in Sources */,
 				0C45DDCA1D9833BE00514B0E /* Image.swift in Sources */,
 				0C45DDD51D9834CB00514B0E /* UIImage+Base64String.swift in Sources */,
-				0C45DDC91D9833BE00514B0E /* Detail.swift in Sources */,
 				0C45DDCC1D9833D300514B0E /* LabelAnnotation.swift in Sources */,
 				0C45DDD81D98352200514B0E /* CloudVision.swift in Sources */,
 				0C01EA5D1D369F6400E0F279 /* MasterViewController.swift in Sources */,

@@ -8,7 +8,7 @@ class MasterViewController: UITableViewController {
     
     var imagePicker = UIImagePickerController()
     var detailViewController: DetailViewController? = nil
-    var objects = [Detail]()
+    var objects = [Image]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

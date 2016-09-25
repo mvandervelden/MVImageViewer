@@ -2,6 +2,11 @@
 
 import UIKit
 
-struct Image: Detail {
-    let image: UIImage?
+class Image {
+    var image: UIImage?
+    var analysis: CloudVisionResult?
+    
+    required init(image: UIImage) {
+        self.image = image
+    }
 }

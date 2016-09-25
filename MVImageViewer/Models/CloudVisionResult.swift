@@ -23,3 +23,11 @@ struct CloudVisionResult: CustomStringConvertible {
         return annotations.description
     }
 }
+
+extension CloudVisionResult {
+    var orderedLabels: String {
+        return annotations.reduce("") { (currentString, annotation) -> String in
+            currentString + (currentString == "" ? "" : "\n") + "\(annotation.label)"
+        }
+    }
+}
