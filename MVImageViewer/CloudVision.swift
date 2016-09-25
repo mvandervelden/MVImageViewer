@@ -5,22 +5,46 @@ import UIKit
 let apiKey = "YOU_API_KEY_HERE"
 let apiLimit = 2097152
 
-struct LabelAnnotation {
+struct LabelAnnotation: CustomStringConvertible {
+    let label: String
+    let score: Double
     
+    init?(json: [String: Any]) {
+        guard let label = json["description"] as? String,
+              let score = json["score"] as? Double
+        else {
+            return nil
+        }
+        self.label = label
+        self.score = score
+    }
+    
+    var description: String {
+        return "<label: \(label), score: \(score)>"
+    }
 }
 
 struct CloudVisionResult: CustomStringConvertible {
     let annotations: [LabelAnnotation]
-    let json: [String: Any]
     
-    init(json: [String: Any]) {
+    init?(json: [String: Any]) {
         print(json)
-        annotations = [LabelAnnotation()]
-        self.json = json
+
+        guard let responses = json["responses"] as? [[String: Any]] else {
+            return nil
+        }
+        let response = responses[0]
+        guard let labelAnnotations = response["labelAnnotations"] as? [[String: Any]] else {
+            return nil
+        }
+        
+        annotations = labelAnnotations.map() { (json) -> LabelAnnotation? in
+            LabelAnnotation(json: json)
+            }.flatMap() { $0 }
     }
     
     var description: String {
-        return json.description
+        return annotations.description
     }
 }
 
@@ -42,6 +66,7 @@ enum CloudVisionError: Error {
     case resizeFailed
     case base64EncodingFailed
     case noData
+    case deserializationError(String)
 }
 
 class CloudVision {
@@ -100,14 +125,14 @@ class CloudVision {
             DispatchQueue.main.async {
                 if let error = error {
                     completion(.failure(error))
-                    return
+                } else if let data = data,
+                   let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any],
+                   let result = CloudVisionResult(json: json) {
+                    completion(.success(result))
+                } else {
+                    completion(.failure(CloudVisionError.noData))
                 }
-                if let data = data,
-                        let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any] {
-                    completion(.success(CloudVisionResult(json: json)))
-                    return
-                }
-                completion(.failure(CloudVisionError.noData))
+                
             }
         }
         task.resume()
