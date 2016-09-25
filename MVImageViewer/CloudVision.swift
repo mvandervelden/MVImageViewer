@@ -5,31 +5,112 @@ import UIKit
 let apiKey = "YOU_API_KEY_HERE"
 let apiLimit = 2097152
 
-struct CloudVisionResult {
+struct LabelAnnotation {
+    
 }
 
-enum CloudVisionFinished {
+struct CloudVisionResult: CustomStringConvertible {
+    let annotations: [LabelAnnotation]
+    let json: [String: Any]
+    
+    init(json: [String: Any]) {
+        print(json)
+        annotations = [LabelAnnotation()]
+        self.json = json
+    }
+    
+    var description: String {
+        return json.description
+    }
+}
+
+enum CloudVisionFinished: CustomStringConvertible {
     case success(CloudVisionResult)
-    case error(Error)
+    case failure(Error)
+    
+    var description: String {
+        switch self {
+        case .failure(let error):
+            return error.localizedDescription
+        case .success(let result):
+            return result.description
+        }
+    }
 }
 
 enum CloudVisionError: Error {
     case resizeFailed
     case base64EncodingFailed
+    case noData
 }
 
 class CloudVision {
-    func process(image: UIImage, completion: (_: CloudVisionFinished) -> Void ) {
+    
+    private var url: URL {
+        get {
+            return URL(string: "https://vision.googleapis.com/v1/images:annotate?key=\(apiKey)")!
+        }
+    }
+    
+    func process(image: UIImage, completion: @escaping (_: CloudVisionFinished) -> Void ) {
         do {
             let binaryData = try image.base64Encoding()
             createRequest(with: binaryData, completion)
         } catch {
-            completion(.error(error))
+            completion(.failure(error))
         }
     }
     
-    private func createRequest(with data: String, _ completion: (_: CloudVisionFinished) -> Void) {
-        completion(.error(CloudVisionError.resizeFailed))
+    private func createRequest(with imageData: String, _ completion: @escaping (_: CloudVisionFinished) -> Void) {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(Bundle.main.bundleIdentifier ?? "", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
+        
+        let json: [String: Any] = [
+            "requests":[
+                "image": [
+                    "content": imageData],
+                "features": [
+                    [
+                        "type": "LABEL_DETECTION",
+                        "maxResults": 10
+                    ], [
+                        "type": "FACE_DETECTION",
+                        "maxResults": 10
+                    ]
+                ]
+            ]
+        ]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: json, options: [])
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        
+        DispatchQueue.global().async {
+            self.perform(request, completion)
+        }
+    }
+    
+    private func perform(_ request: URLRequest, _ completion: @escaping (_: CloudVisionFinished) -> Void) {
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { (data, response, error) in
+            DispatchQueue.main.async {
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                if let data = data,
+                        let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any] {
+                    completion(.success(CloudVisionResult(json: json)))
+                    return
+                }
+                completion(.failure(CloudVisionError.noData))
+            }
+        }
+        task.resume()
     }
 }
 

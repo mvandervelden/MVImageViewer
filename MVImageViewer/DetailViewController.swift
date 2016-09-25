@@ -10,6 +10,8 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var detailImageView: UIImageView!
     
+    var vision = CloudVision()
+    
     var detailItem: Detail? {
         didSet {
             configureView()
@@ -24,6 +26,11 @@ class DetailViewController: UIViewController {
     func configureView() {
         if let imageView = detailImageView {
             imageView.image = detailItem?.image
+            if let image = detailItem?.image {
+                vision.process(image: image) { (result) in
+                    print(result)
+                }
+            }
         }
     }
 }
