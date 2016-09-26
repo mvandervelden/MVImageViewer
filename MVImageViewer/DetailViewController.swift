@@ -12,7 +12,13 @@ class DetailViewController: UIViewController {
     
     var vision = CloudVision()
     
-    var detailItem: Image?
+    var detailItem: Image? {
+        didSet {
+            if isViewLoaded {
+                configureView()
+            }
+        }
+    }
     
     var isLoading = false {
         willSet {

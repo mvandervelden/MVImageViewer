@@ -10,7 +10,6 @@ class DetailViewControllerSpec: QuickSpec {
             beforeEach() {
                 subject = UIViewController.loadViewController(withIdentifier: "DetailViewController",
                                                               fromStoryboard: "Main") as? DetailViewController
-                subject.show()
             }
             
             context("given a detail item") {
@@ -18,6 +17,7 @@ class DetailViewControllerSpec: QuickSpec {
                 
                 beforeEach() {
                     subject.detailItem = detail
+                    subject.show()
                 }
                 
                 it("sets the item's description in the detail label") {
@@ -38,6 +38,10 @@ class DetailViewControllerSpec: QuickSpec {
             }
             
             context("given no detail item") {
+                beforeEach() {
+                    subject.show()
+                }
+                
                 it("has an empty label") {
                     expect(subject.detailImageView.image).to(beNil())
                 }
