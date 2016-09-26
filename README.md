@@ -15,7 +15,6 @@ and let it analyse by the Google Cloud Vision API.
 * No persistence as of now: analyses are not stored
 * Quirky navigation
 * Filling out & storing API key securely
-* Cucumberish tests don't take into account the 'allow image access' dialog
 
 
 ### Installation notes
