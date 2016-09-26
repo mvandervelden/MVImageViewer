@@ -1,10 +1,6 @@
-// Created by mmvdv on 13/07/16.
+//  Copyright © 2016 mmvdv. All rights reserved.
 
 import UIKit
-
-struct Image: Detail {
-    let image: UIImage?
-}
 
 class MasterViewController: UITableViewController {
     
@@ -13,7 +9,6 @@ class MasterViewController: UITableViewController {
     var imagePicker = UIImagePickerController()
     var detailViewController: DetailViewController? = nil
     var objects = [Detail]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +19,6 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             let navigationController = controllers.last as? UINavigationController
             detailViewController = navigationController?.topViewController as? DetailViewController
-            
         }
     }
     

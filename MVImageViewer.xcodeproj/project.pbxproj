@@ -13,7 +13,14 @@
 		0C01EA641D369F6400E0F279 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C01EA631D369F6400E0F279 /* Assets.xcassets */; };
 		0C01EA671D369F6400E0F279 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C01EA651D369F6400E0F279 /* LaunchScreen.storyboard */; };
 		0C01EA721D369F6400E0F279 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C01EA711D369F6400E0F279 /* DetailViewControllerTests.swift */; };
-		0C45DDBF1D97CDA600514B0E /* CloudVision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45DDBE1D97CDA600514B0E /* CloudVision.swift */; };
+		0C45DDC91D9833BE00514B0E /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45DDC71D9833BE00514B0E /* Detail.swift */; };
+		0C45DDCA1D9833BE00514B0E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45DDC81D9833BE00514B0E /* Image.swift */; };
+		0C45DDCC1D9833D300514B0E /* LabelAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45DDCB1D9833D300514B0E /* LabelAnnotation.swift */; };
+		0C45DDCE1D9833F800514B0E /* CloudVisionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45DDCD1D9833F800514B0E /* CloudVisionResult.swift */; };
+		0C45DDD01D98343D00514B0E /* CloudVisionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45DDCF1D98343D00514B0E /* CloudVisionResponse.swift */; };
+		0C45DDD21D98346000514B0E /* CloudVisionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45DDD11D98346000514B0E /* CloudVisionError.swift */; };
+		0C45DDD51D9834CB00514B0E /* UIImage+Base64String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45DDD41D9834CB00514B0E /* UIImage+Base64String.swift */; };
+		0C45DDD81D98352200514B0E /* CloudVision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45DDD71D98352200514B0E /* CloudVision.swift */; };
 		0C649D731D36DE7A00BAC631 /* UIViewController+Showing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C649D721D36DE7A00BAC631 /* UIViewController+Showing.swift */; };
 		0C649D751D36E28D00BAC631 /* MasterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C649D741D36E28D00BAC631 /* MasterViewControllerTests.swift */; };
 		0C649D771D377ACC00BAC631 /* InsertionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C649D761D377ACC00BAC631 /* InsertionTableView.swift */; };
@@ -57,7 +64,14 @@
 		0C01EA6D1D369F6400E0F279 /* MVImageViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVImageViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C01EA711D369F6400E0F279 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		0C01EA731D369F6400E0F279 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0C45DDBE1D97CDA600514B0E /* CloudVision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudVision.swift; sourceTree = "<group>"; };
+		0C45DDC71D9833BE00514B0E /* Detail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Detail.swift; path = MVImageViewer/ViewModels/Detail.swift; sourceTree = SOURCE_ROOT; };
+		0C45DDC81D9833BE00514B0E /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Image.swift; path = MVImageViewer/ViewModels/Image.swift; sourceTree = SOURCE_ROOT; };
+		0C45DDCB1D9833D300514B0E /* LabelAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelAnnotation.swift; sourceTree = "<group>"; };
+		0C45DDCD1D9833F800514B0E /* CloudVisionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudVisionResult.swift; sourceTree = "<group>"; };
+		0C45DDCF1D98343D00514B0E /* CloudVisionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudVisionResponse.swift; sourceTree = "<group>"; };
+		0C45DDD11D98346000514B0E /* CloudVisionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudVisionError.swift; sourceTree = "<group>"; };
+		0C45DDD41D9834CB00514B0E /* UIImage+Base64String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Base64String.swift"; sourceTree = "<group>"; };
+		0C45DDD71D98352200514B0E /* CloudVision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudVision.swift; sourceTree = "<group>"; };
 		0C649D721D36DE7A00BAC631 /* UIViewController+Showing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Showing.swift"; sourceTree = "<group>"; };
 		0C649D741D36E28D00BAC631 /* MasterViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewControllerTests.swift; sourceTree = "<group>"; };
 		0C649D761D377ACC00BAC631 /* InsertionTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertionTableView.swift; sourceTree = "<group>"; };
@@ -143,9 +157,12 @@
 		0C01EA591D369F6400E0F279 /* MVImageViewer */ = {
 			isa = PBXGroup;
 			children = (
+				0C45DDC61D9833AE00514B0E /* Models */,
+				0C45DDC11D9832D400514B0E /* ViewModels */,
+				0C45DDD61D98351300514B0E /* Services */,
+				0C45DDD31D9834B000514B0E /* Utils */,
 				0C01EA5C1D369F6400E0F279 /* MasterViewController.swift */,
 				0C01EA5E1D369F6400E0F279 /* DetailViewController.swift */,
-				0C45DDBE1D97CDA600514B0E /* CloudVision.swift */,
 				0C01EA601D369F6400E0F279 /* Main.storyboard */,
 				0C01EA631D369F6400E0F279 /* Assets.xcassets */,
 				7149F63B41B216F2489D213A /* Supporting Files */,
@@ -162,6 +179,43 @@
 				7149FB93B5B57C5EFB48F19C /* Helpers */,
 			);
 			path = MVImageViewerTests;
+			sourceTree = "<group>";
+		};
+		0C45DDC11D9832D400514B0E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0C45DDC71D9833BE00514B0E /* Detail.swift */,
+				0C45DDC81D9833BE00514B0E /* Image.swift */,
+			);
+			name = ViewModels;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0C45DDC61D9833AE00514B0E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0C45DDCB1D9833D300514B0E /* LabelAnnotation.swift */,
+				0C45DDCD1D9833F800514B0E /* CloudVisionResult.swift */,
+				0C45DDCF1D98343D00514B0E /* CloudVisionResponse.swift */,
+				0C45DDD11D98346000514B0E /* CloudVisionError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0C45DDD31D9834B000514B0E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0C45DDD41D9834CB00514B0E /* UIImage+Base64String.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0C45DDD61D98351300514B0E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0C45DDD71D98352200514B0E /* CloudVision.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		0C69C3831D6DA88000FD8BAD /* CucumberishTests */ = {
@@ -528,10 +582,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C45DDCE1D9833F800514B0E /* CloudVisionResult.swift in Sources */,
 				0C01EA5F1D369F6400E0F279 /* DetailViewController.swift in Sources */,
+				0C45DDD21D98346000514B0E /* CloudVisionError.swift in Sources */,
+				0C45DDCA1D9833BE00514B0E /* Image.swift in Sources */,
+				0C45DDD51D9834CB00514B0E /* UIImage+Base64String.swift in Sources */,
+				0C45DDC91D9833BE00514B0E /* Detail.swift in Sources */,
+				0C45DDCC1D9833D300514B0E /* LabelAnnotation.swift in Sources */,
+				0C45DDD81D98352200514B0E /* CloudVision.swift in Sources */,
 				0C01EA5D1D369F6400E0F279 /* MasterViewController.swift in Sources */,
+				0C45DDD01D98343D00514B0E /* CloudVisionResponse.swift in Sources */,
 				7149F6EB966085D901A6728D /* AppDelegate.swift in Sources */,
-				0C45DDBF1D97CDA600514B0E /* CloudVision.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,10 +1,6 @@
-// Created by mmvdv on 13/07/16.
+//  Copyright © 2016 mmvdv. All rights reserved.
 
 import UIKit
-
-protocol Detail {
-    var image: UIImage? { get }
-}
 
 class DetailViewController: UIViewController {
     
@@ -55,7 +51,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    private func handle(response: CloudVisionFinished) {
+    private func handle(response: CloudVisionResponse) {
         isLoading = false
         switch response {
         case .success(let result):
