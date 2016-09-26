@@ -19,7 +19,7 @@ and let it analyse by the Google Cloud Vision API.
 
 ### Installation notes
 
-Replace let apiKey = "YOU_API_KEY_HERE" 
+Replace `CloudVisionAPIKey: "YOU_API_KEY_HERE"` in Info.plist 
 with a valid API key for your app id. 
 
 
