@@ -18,6 +18,10 @@ class StepDefinitions: NSObject {
         MatchAll("I tap the (.*)? button") { (args, userInfo) -> Void in
             self.tapButton(withLabel: (args?[0])!)
         }
+        
+        And("I agree to give access to the gallery") { (args, userInfo) -> Void in
+            self.tester().acknowledgeSystemAlert()
+        }
 
         And("I select the first image from the gallery") { (args, userInfo) -> Void in
             self.tester().waitForAnimationsToFinish()
