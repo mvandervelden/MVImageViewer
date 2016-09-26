@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/mvandervelden/MVImageViewer.svg?branch=master)](https://travis-ci.org/mvandervelden/MVImageViewer)
 --------------
 
-Universal app that lets you pick an image from the gallery, add it to your list,
+Universal (iPhone/iPad) app that lets you pick an image from the gallery, add it to your list,
 and let it analyse by the Google Cloud Vision API.
 
 ### Features
