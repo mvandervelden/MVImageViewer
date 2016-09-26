@@ -2,10 +2,17 @@
 
 import UIKit
 
-let apiKey = "YOU_API_KEY_HERE"
 let apiLimit = 2097152
 
 class CloudVision {
+    private var apiKey: String {
+        get {
+            if let key = Bundle.main.infoDictionary?["CloudVisionAPIKey"] as? String {
+                return key
+            }
+            return "NoApiKeyConfigured"
+        }
+    }
     
     private var url: URL {
         get {
